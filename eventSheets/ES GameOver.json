@@ -1,0 +1,27 @@
+{
+	"name": "ES GameOver",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap",
+					"objectClass": "Touch",
+					"sid": 657306032417239
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 552893067626998,
+					"parameters": {
+						"layout": "Main"
+					}
+				}
+			],
+			"sid": 656563816703122
+		}
+	],
+	"sid": 589634034942302
+}

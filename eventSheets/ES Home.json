@@ -1,0 +1,30 @@
+{
+	"name": "ES Home",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 178890248498700,
+					"parameters": {
+						"object": "Sprite"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 609947364370877,
+					"parameters": {
+						"layout": "Main"
+					}
+				}
+			],
+			"sid": 457417330000132
+		}
+	],
+	"sid": 864718045634936
+}

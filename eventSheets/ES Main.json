@@ -1,0 +1,265 @@
+{
+	"name": "ES Main",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "Score",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 742921418893707
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 682296913554847
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 850094091792982,
+					"parameters": {
+						"variable": "Score",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 984131216806709
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 434493595103883,
+					"parameters": {
+						"key": 32
+					}
+				}
+			],
+			"actions": [],
+			"sid": 337350976311485,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 617430129632096,
+							"parameters": {
+								"interval-seconds": "0.1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "Player",
+							"sid": 915625475838091,
+							"parameters": {
+								"object": "Peluru",
+								"layer": "0",
+								"image-point": "0",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Peluru",
+							"sid": 838136559482202,
+							"parameters": {
+								"angle": "-90"
+							}
+						}
+					],
+					"sid": 464106165382465
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-outside-layout",
+					"objectClass": "Peluru",
+					"sid": 419504884379682
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Peluru",
+					"sid": 942993860603380
+				}
+			],
+			"sid": 302226289176138
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Peluru",
+					"sid": 501527833318956,
+					"parameters": {
+						"object": "Batu"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Peluru",
+					"sid": 480590996164910
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Batu",
+					"sid": 256335939060533,
+					"parameters": {
+						"instance-variable": "nyawa",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 474290321865415
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Batu",
+					"sid": 533501864135528,
+					"parameters": {
+						"instance-variable": "nyawa",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Batu",
+					"sid": 565250449284177,
+					"parameters": {
+						"object": "partikel",
+						"layer": "0",
+						"image-point": "0",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Batu",
+					"sid": 180228931922144
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 805369515294212,
+					"parameters": {
+						"variable": "Score",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Score",
+					"sid": 408999785661741,
+					"parameters": {
+						"text": "\"Score : \" & Score"
+					}
+				}
+			],
+			"sid": 134729331556858
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 792586582024574,
+					"parameters": {
+						"interval-seconds": "3"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 582247517337784,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-random-instance",
+							"objectClass": "System",
+							"sid": 715726791886647,
+							"parameters": {
+								"object": "Object"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "spawn-another-object",
+							"objectClass": "Object",
+							"sid": 328864204292800,
+							"parameters": {
+								"object": "Batu",
+								"layer": "0",
+								"image-point": "0",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Batu",
+							"sid": 354769585930267,
+							"parameters": {
+								"frame-number": "int(random(0,4))"
+							}
+						}
+					],
+					"sid": 374916513507560
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 676704028441182,
+					"parameters": {
+						"object": "Batu"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 874271081373753,
+					"parameters": {
+						"layout": "GameOver"
+					}
+				}
+			],
+			"sid": 382596472066685
+		}
+	],
+	"sid": 301598191315787
+}
